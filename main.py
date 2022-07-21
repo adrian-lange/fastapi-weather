@@ -1,5 +1,9 @@
 from fastapi import FastAPI
 from api.weather import router
+from db.db_setup import engine
+from db.models import weather
+
+weather.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Fast API",
